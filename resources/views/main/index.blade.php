@@ -27,7 +27,7 @@
                         </div>
                     @endforeach
                     <div>
-                       <h6>  {{$posts -> links('vendor.pagination.bootstrap-4')}} </h6>
+                       <h6> {{$posts -> links('vendor.pagination.bootstrap-4')}} </h6>
                     </div>
                 </div>
             </section>
@@ -96,8 +96,14 @@
                         @endforeach
                     </div>
                     <div class="widget">
-                        <h5 class="widget-title">Categories</h5>
-                        <img src="{{asset('assets/images/blog_widget_categories.jpg')}}" alt="categories" class="w-100">
+                        <h5 class="widget-title text-center">Top Five Categories</h5>
+                        @foreach($fivePopularCategories as $topCategory)
+
+                             <a href="{{route('main.category.posts', $topCategory->id)}}">
+                                <p class="btn-success text-center rounded-pill">  {{$topCategory->title_category}} </p>  </a>
+
+                        @endforeach
+
                     </div>
                 </div>
             </div>
