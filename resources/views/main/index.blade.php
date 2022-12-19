@@ -1,9 +1,8 @@
 @extends('main.layouts.main')
 @section('title')
-    <title> Home </title>
+    <title> Home:: </title>
 @endsection
 @section('content')
-
     <main class="blog">
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
@@ -75,6 +74,14 @@
                                 </div>
                         </div>
                     </div>
+                    <div class="widget">
+                        <h5 class="widget-title text-center">Top Five Categories</h5>
+                        @foreach($fivePopularCategories as $topCategory)
+
+                            <a href="{{route('main.category.posts', $topCategory->id)}}">
+                                <p class="btn-success text-center rounded-pill">  {{$topCategory->title_category}} </p> </a>
+                        @endforeach
+                    </div>
                     <div class="widget widget-post-list">
                         <h5 class="widget-title">Random posts</h5>
                         @foreach($postRandom as $k=>$post)
@@ -95,16 +102,7 @@
                             </ul>
                         @endforeach
                     </div>
-                    <div class="widget">
-                        <h5 class="widget-title text-center">Top Five Categories</h5>
-                        @foreach($fivePopularCategories as $topCategory)
 
-                             <a href="{{route('main.category.posts', $topCategory->id)}}">
-                                <p class="btn-success text-center rounded-pill">  {{$topCategory->title_category}} </p>  </a>
-
-                        @endforeach
-
-                    </div>
                 </div>
             </div>
         </div>

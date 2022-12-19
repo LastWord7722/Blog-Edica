@@ -125,13 +125,21 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
+
             <li>
-                    <a href="{{route('main.index')}}" style="margin-right:10px" class="btn btn-primary">Back</a>
+                <a href="{{route('main.index')}}" style="margin-right:10px" class="btn btn-outline-primary"> Main </a>
             </li>
+
+            @if(auth()->user()->role->name_role == 'admin')
+            <li>
+                    <a href="{{route('admin.main.index')}}" style="margin-right:10px" class="btn btn-outline-primary">Admin</a>
+            </li>
+            @endif
+
             <li>
                 <form action="{{route('logout')}}" method="POST" class="d-flex justify-content-end">
                     @csrf
-                    <input type="submit" class="btn btn-outline-primary" value="Exit">
+                    <input type="submit" class="btn btn-primary" value="Exit">
                 </form>
             </li>
         </ul>

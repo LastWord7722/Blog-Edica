@@ -124,10 +124,17 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
+            <li>
+                <a href="{{route('main.index')}}" style="margin-right:10px" class="btn btn-outline-primary ">Main</a>
+            </li>
+            <li>
+                <a href="{{route('personal.home')}}" style="margin-right:10px" class="btn btn-outline-primary">Personal</a>
+            </li>
+
             <li class="nav-item">
                 <form action="{{route('logout')}}" method="POST">
                     @csrf
-                    <input type="submit" class="btn btn-outline-primary mr-5" value="Exit">
+                    <input type="submit" class="btn btn-primary" value="Exit">
                 </form>
             </li>
         </ul>
