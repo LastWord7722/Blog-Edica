@@ -28,7 +28,6 @@ class HomePostsController extends Controller
 
         $randomPost = Post::withCount('UsersLikdMorePost')->withCount('Comment')->with('tag')->get()->random(3);
 
-
         return view('main.show', compact('post','randomPost'));
     }
 

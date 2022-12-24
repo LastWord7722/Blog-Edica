@@ -1,11 +1,11 @@
 @extends('main.layouts.main')
 @section('title')
-    <title> Home:: </title>
+    <title> Home :: Edica </title>
 @endsection
 @section('content')
     <main class="blog">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
+            <h1 class="edica-page-title " data-aos="fade-up"> </h1>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach($posts as $k=>$post)
@@ -25,10 +25,12 @@
                             </a>
                         </div>
                     @endforeach
+
                     <div>
                        <h6> {{$posts -> links('vendor.pagination.bootstrap-4')}} </h6>
                     </div>
                 </div>
+
             </section>
             <h1 class="edica-page-title" data-aos="fade-up">Popular posts</h1>
             <div class="row">

@@ -27,7 +27,7 @@
                     @foreach($comments as $comment)
                         <tr>
                             <td>{{$comment->id}}</td>
-                             <td>  {{$comment->users[0]->name}}> </td>
+                             <td>  {{$comment->users[0]->name}} </td>
                             <td><a href="{{route('main.show',$comment->posts[0]->id )}}">{{$comment->posts[0]->title}} </a></td> </a>
                             <td>{{$comment->message}}</td>
                             <td><a href="{{route('admin.comment.edit',$comment->id )}}" class="text-success"><i class="fa-regular fa-pen-to-square"></i> </a></td>
