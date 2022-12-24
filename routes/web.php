@@ -58,6 +58,8 @@ Route::group(['namespace'=>'home/tag', 'prefix'=> 'tags'],function (){
 //PERSONAL CABINET
 Route::group(['namespace' => 'personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [PersonalController::class, 'home']) -> name('personal.home');
+    Route::get('/home/{personal}/edit',[PersonalController::class, 'edit'])->name('personal.home.edit');
+    Route::post('/home/{personal}/update',[PersonalController::class, 'update'])->name('personal.home.update');
 
     Route::group(['namespace' => 'comment', 'prefix' => 'comment'], function(){
 
