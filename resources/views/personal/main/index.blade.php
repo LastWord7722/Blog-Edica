@@ -8,7 +8,7 @@
                 <div class="card card-widget widget-user">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header bg-info">
-                        <h3 class="widget-user-username"> {{$auth -> name}} </h3>
+                        <h3 class="widget-user-username"> {{auth()->user()->name}} </h3>
                         <h5 class="widget-user-desc">Users Edica </h5>
                     </div>
                     <div class="widget-user-image">
@@ -27,7 +27,7 @@
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
                                     <h5 class="description-header">Edit</h5>
-                                    <a  href="{{route('personal.home.edit',auth()->user()->id)}}" class="btn-primary">Go !</a>
+                                    <a  href="{{route('personal.home.edit', auth()->user()->id)}}" class="btn-primary">Go !</a>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
