@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">3,200</h5>
-                                    <span class="description-text">SALES</span>
+                                    <h5 class="description-header">{{auth()->user()->LikedPosts->count()}}</h5>
+                                    <span class="description-text">LIKES</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -27,15 +27,16 @@
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
                                     <h5 class="description-header">Edit</h5>
-                                    <a  href="{{route('personal.home.edit', auth()->user()->id)}}" class="btn-primary">Go !</a>
+                                    <a href="{{route('personal.home.edit', auth()->user()->id)}}"
+                                       class="btn btn-primary col-2"> Go !</a>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-4">
                                 <div class="description-block">
-                                    <h5 class="description-header">35</h5>
-                                    <span class="description-text">PRODUCTS</span>
+                                    <h5 class="description-header">{{$comments->count()}}</h5>
+                                    <span class="description-text">COMMENTS</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -47,50 +48,47 @@
                 <!-- /.widget-user -->
             </div>
             <!-- Small boxes (Stat box) -->
-            <div class="row">
 
-                <!-- ./col -->
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <h5 class="text-center "> Last Activity </h5>
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="activity">
+                            <!-- Post -->
+                            @foreach($comments as $value)
+                                <div class="post">
+                                    <div class="">
+                                    <span class="username">
+                                        <p>{{$user->name}}</p>
+                                     </span>
+                                        <span class="description">{{$value-> DataAsCarbon->diffForHumans()}}</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        {{$value->message}}
+                                    </p>
 
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{$liked}}</h3>
+                                    <p>
+                                        <a href="{{route('main.show', $value->posts[0]->id)}}"
+                                           class="link-black text-sm mr-2 text-blue"><i class="fas fa-share mr-1"></i>
+                                            Go to post << {{$value->posts[0]->title}} >></a>
+                                        <span class="float-right">
+                        </span>
+                                    </p>
+                                </div>
+                            @endforeach
 
-                            <p>Liked</p>
                         </div>
-                        <div class="icon">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                        <a href="{{route('personal.like.index')}}" class="small-box-footer">More info <i
-                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{$comments}}</h3>
+            </div><!-- /.card-body -->
+        </div>
 
-                            <p>Comments</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa-regular fa-comments"></i>
-                        </div>
-                        <a href="{{route('personal.comment.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right "></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-            </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            <div class="row">
 
-            </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
     </section>
 
 

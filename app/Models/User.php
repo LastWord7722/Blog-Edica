@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail // подключ�
     }
 
     public function comments(){
-        return $this->HasMany(Comment::class, 'user_id','id');
+        return $this->HasMany(Comment::class, 'user_id','id')->with('posts');
     }
 
 

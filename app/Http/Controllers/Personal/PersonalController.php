@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Personal\Profile;
 use App\Http\Requests\Personal\Profile\UpdateRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,11 +10,11 @@ class PersonalController extends Controller
 {
     public function home()
     {
-        $liked = auth()->user()->LikedPosts->count();
-        $comments = auth()->user()->comments->count();
+        $user = Auth::user();
+        $liked = auth()->user()->LikedPosts;
+        $comments = auth()->user()->comments->sortByDesc('created_at');
 
-
-        return view('personal.main.index', compact('liked', 'comments'));
+        return view('personal.main.index', compact('liked', 'comments', 'user'));
     }
 
     public function edit()
