@@ -68,7 +68,7 @@
                                         <span class="description">{{$value-> DataAsCarbon->diffForHumans()}}</span>
                                     </div>
                                     <!-- /.user-block -->
-                                    <p>
+                                    <p class="text-dark fw-bold">
                                         {{$value->message}}
                                     </p>
 
@@ -76,8 +76,6 @@
                                         <a href="{{route('main.show', $value->posts[0]->id)}}"
                                            class="link-black text-sm mr-2 text-blue"><i class="fas fa-share mr-1"></i>
                                             Go to post << {{$value->posts[0]->title}} >></a>
-                                        <span class="float-right">
-                        </span>
                                     </p>
                                 </div>
                             @endforeach
