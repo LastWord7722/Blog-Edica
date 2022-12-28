@@ -16,15 +16,20 @@ class Comment extends Model
     protected $table = 'comments';
     protected $guarded = false;
 
-    public function posts(){
-        return $this->hasMany(Post::class, 'id','post_id');
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'id', 'post_id');
     }
-    public function users(){
-        return $this->hasMany(User::class, 'id','user_id');
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 
 
-    public function getDataAsCarbonAttribute(){
+
+    public function getDataAsCarbonAttribute()
+    {
         return Carbon::parse($this->created_at);
     }
 }

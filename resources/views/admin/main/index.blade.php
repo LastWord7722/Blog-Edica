@@ -78,6 +78,44 @@
             </div>
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
+
+        <div class="card">
+            <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                    <h5 class="text-center "> Last Activity comments fot Site</h5>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="activity">
+                        <!-- Post -->
+                        @foreach($lastActivity as $value)
+                            <div class="post">
+                                <div class="">
+                                    <span class="username">
+
+                                        <p class="text-dark"> {{$value->users[0]->role->name_role}}   {{$value->users[0]->name}}</p>
+                                     </span>
+                                    <span class="description">{{$value-> DataAsCarbon->diffForHumans()}}</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <p class="text-dark fw-bold">
+                                    {{$value->message}}
+                                </p>
+
+                                <p>
+                                    <a href="{{route('main.show', $value->posts[0]->id)}}"
+                                       class="link-black text-sm mr-2 text-blue"><i class="fas fa-share mr-1"></i>
+                                        Go to post << {{$value->posts[0]->title}} >></a>
+                                </p>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.card-body -->
+        </div>
     </section>
 
 
