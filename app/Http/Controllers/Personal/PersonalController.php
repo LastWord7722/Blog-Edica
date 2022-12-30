@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Personal\Profile\UpdateRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PersonalController extends Controller
 {
@@ -24,10 +26,15 @@ class PersonalController extends Controller
         return view('personal.main.edit', compact('user'));
     }
 
-    public function update(UpdateRequest $request)
+    public function update(UpdateRequest $request, User $user)
     {
+        dd($user);
+
         $data = $request->validated();
-        auth()->user()->update($data);
+        $data['image_avatar'] = Storage::disk('public')->put('images/avatar', $data['image_avatar']);
+
+        $user->update($data);
+
 
         return redirect()->route('personal.home');
 

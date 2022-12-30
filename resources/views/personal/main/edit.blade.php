@@ -2,7 +2,7 @@
 
 @section('personal_content')
 
-    <form action="{{route('personal.home.update', $user->id)}} " class="col-9" method="post">
+    <form action="{{route('personal.home.update', $user->id)}} " class="col-9" method="post" enctype="multipart/form-data">
         @method('POST')
         @csrf
         <div class="d-flex flex-row">
@@ -22,17 +22,17 @@
                                    value="{{$user->email}}"> <!--проверь нейминг -->
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary btn-block"><b>Update</b></a>  <!--роутинг! -->
+                    <button type="submit" class="btn btn-primary btn-block"><b>Update</b></button>  <!--роутинг! -->
                 </div>
             </div>
             <!-- /.card-body -->
+
             <div class="text-center col-auto m-lg-5 d-flex flex-column " >
-                <img class="card-img-top img-fluid rounded-circle " style="width: 16rem; height: 16rem;"
-                     src="{{asset('storage/images/DNgdgnrWqm8FbuPBWXHisIM9gaqa9C96mPTxi55u.gif')}}"
+                <img class="card-img-top  img-fluid rounded-circle " style="width: 16rem; height: 16rem;"
+                     src="{{url('storage',$user->image_avatar)}}"
                      alt="User profile picture">
-                <button class="btn btn-primary btn-block mt-3">
-                    Add Avater
-                </button>
+                <input type="file" name="image_avatar" class=" btn btn-primary btn-block mt-3">
+
             </div>
         </div>
     </form>

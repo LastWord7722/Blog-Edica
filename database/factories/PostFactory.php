@@ -21,8 +21,8 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->jobTitle(),
             'content' =>$this->faker->realTextBetween(),
-            'preview_image' => 'images/vzHVWH6Ag2RU2b201peDJzpQrFXmYPVtHbTMr3Nl.jpg',
-            'main_image' => '/images/vzHVWH6Ag2RU2b201peDJzpQrFXmYPVtHbTMr3Nl.jpg',
+            'preview_image' => 'images/preview/nature-3082832_960_720.jpg',
+            'main_image' => 'images/preview/nature-3082832_960_720.jpg',
             'category_id' => Category::get()->random()->id,
         ];
     }

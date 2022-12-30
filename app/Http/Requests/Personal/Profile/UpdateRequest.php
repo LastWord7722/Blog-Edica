@@ -21,10 +21,14 @@ class UpdateRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
     public function rules()
     {
         return [
             'name' => 'required|string',
+            'email'=> 'email',
+            'image_avatar' => 'required | mimes:jpeg,jpg,png | max:1000',
         ];
+
     }
 }
