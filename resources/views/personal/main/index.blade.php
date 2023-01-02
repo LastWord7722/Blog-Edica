@@ -12,7 +12,7 @@
                         <h5 class="widget-user-desc">Users Edica </h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                        <img class="img-circle elevation-2" src="{{url ('storage/' . $user->image_avatar ) }}" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">

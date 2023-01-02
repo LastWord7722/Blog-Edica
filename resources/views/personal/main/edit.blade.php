@@ -28,8 +28,8 @@
             <!-- /.card-body -->
 
             <div class="text-center col-auto m-lg-5 d-flex flex-column " >
-                <img class="card-img-top  img-fluid rounded-circle " style="width: 16rem; height: 16rem;"
-                     src="{{url('storage',$user->image_avatar)}}"
+                <img class="img-circle elevation-2" style="width: 16rem; height: 16rem;"
+                     src="{{url ('storage/' . $user->image_avatar ) }}"
                      alt="User profile picture">
                 <input type="file" name="image_avatar" class=" btn btn-primary btn-block mt-3">
 

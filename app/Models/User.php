@@ -45,6 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail // подключ�
         'email',
         'password',
         'role_id',
+        'image_avatar',
     ];
 
     /**

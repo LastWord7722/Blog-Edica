@@ -13,6 +13,7 @@ class PersonalController extends Controller
     public function home()
     {
         $user = Auth::user();
+
         $liked = auth()->user()->LikedPosts;
         $comments = auth()->user()->comments->sortByDesc('created_at');
 
@@ -26,10 +27,9 @@ class PersonalController extends Controller
         return view('personal.main.edit', compact('user'));
     }
 
-    public function update(UpdateRequest $request, User $user)
+    public function update(UpdateRequest $request, )
     {
-        dd($user);
-
+        $user = Auth::user();
         $data = $request->validated();
         $data['image_avatar'] = Storage::disk('public')->put('images/avatar', $data['image_avatar']);
 
