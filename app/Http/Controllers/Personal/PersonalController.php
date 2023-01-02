@@ -36,7 +36,8 @@ class PersonalController extends Controller
         $user->update($data);
 
 
-        return redirect()->route('personal.home');
+        return back()->with('You have successfully upload image');
+
 
     }
 }
