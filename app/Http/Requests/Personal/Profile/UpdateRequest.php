@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email'=> 'email',
-            'image_avatar' => ' nullable|mimes:jpeg,jpg,png | max:1000',
+            'image_avatar' => 'mimes:jpeg,jpg,png | max:1000',
         ];
 
     }

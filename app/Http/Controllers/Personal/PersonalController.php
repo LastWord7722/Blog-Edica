@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Personal\Profile\UpdateRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Dotenv\Store\File;
 
 class PersonalController extends Controller
 {
@@ -27,11 +27,21 @@ class PersonalController extends Controller
         return view('personal.main.edit', compact('user'));
     }
 
-    public function update(UpdateRequest $request, )
+    public function update(UpdateRequest $request)
     {
         $user = Auth::user();
+        $newImage = $request->hasFile('image_avatar');
+        $oldImage = $user->image_avatar;
+
         $data = $request->validated();
-        $data['image_avatar'] = Storage::disk('public')->put('images/avatar', $data['image_avatar']);
+
+        if ($newImage === true and $newImage !== $oldImage) {
+            if ($newImage !== null and $newImage !== $oldImage) {
+                Storage::disk('public')->delete($oldImage);
+
+            }
+            $data['image_avatar'] = Storage::disk('public')->put('images/avatar', $data['image_avatar']);
+        }
 
         $user->update($data);
 
