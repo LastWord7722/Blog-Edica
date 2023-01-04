@@ -25,7 +25,6 @@ class CommentsController extends Controller
 
     public function update(UpdateRequest $request, Comment $comment)
     {
-
         $data = $request->validated();
         $comment->update($data);
 

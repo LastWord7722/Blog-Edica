@@ -14,7 +14,6 @@ class CommentController extends Controller
     public function index()
     {
         $user = auth()->user()->id;
-
         $dataComment = Comment::With('posts')->where('user_id','=', $user)->get();
 
         return view('personal.comment.index', compact('dataComment'));

@@ -1,8 +1,6 @@
 <?php
-
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Comment\CommentsController;
-
 use App\Http\Controllers\Admin\Main\AdminMainController;
 use App\Http\Controllers\Admin\Post\PostController;
 use App\Http\Controllers\Admin\Tag\TagController;
@@ -20,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 //home
 Route::group(['namespace'=>'home'],function (){
     Route::get('/', [HomePostsController::class, 'index'])->name('main.index');
     Route::get('/{post}', [HomePostsController::class, 'show'])->name('main.show');
 
-    Route::group(['namespace' => 'home/Comment', 'prefix'=>'{post}/comment'],function (){
-       Route::post('/',[CommentMainController::class,'store']) ->name('comment.main.store');
+    Route::group(['namespace' => 'home/Comment', 'prefix'=>''],function (){
+       Route::post('{post}/comment',[CommentMainController::class,'store']) ->name('comment.main.store');
+        Route::delete('/{comment}/', [CommentMainController::class, 'destroy'])->name('comment.main.destroy');
     });
 
     Route::group(['namespace' => 'home/likes', 'prefix'=>'{post}/likes'],function (){
@@ -54,7 +52,6 @@ Route::group(['namespace'=>'home/tag', 'prefix'=> 'tags'],function (){
     });
 });
 
-
 //PERSONAL CABINET
 Route::group(['namespace' => 'personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [PersonalController::class, 'home']) -> name('personal.home');
@@ -62,20 +59,16 @@ Route::group(['namespace' => 'personal', 'prefix' => 'personal', 'middleware' =>
     Route::post('/home/{personal}/update',[PersonalController::class, 'update'])->name('personal.home.update');
 
     Route::group(['namespace' => 'comment', 'prefix' => 'comment'], function(){
-
         Route::get('/',[CommentController::class, 'index'])->name('personal.comment.index');
         Route::get('/{comment}/edit',[CommentController::class, 'edit'])->name('personal.comment.edit');
         Route::patch('/{comment}',[CommentController::class, 'update'])->name('personal.comment.update');
-
     });
 
     Route::group(['namespace' => 'like', 'prefix'=>'like'], function (){
 
         Route::get('/', [LikeController::class, 'index'])->name('personal.like.index');
     });
-
 });
-
 //ADMIN                                                                                       верефикация
 Route::group(['namespace' => 'Main', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     //MAIN
@@ -138,7 +131,6 @@ Route::group(['namespace' => 'Main', 'prefix' => 'admin', 'middleware' => ['auth
         Route::get('/{comment}/edit', [CommentsController::class, 'edit'])->name('admin.comment.edit');
         Route::patch('/{comment}', [CommentsController::class, 'update'])->name('admin.comment.update');
     });
-
 });
 
 

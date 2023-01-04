@@ -11,8 +11,6 @@ class LikeHomeController extends Controller
     public function store(Post $post){
         auth()->user()->LikedPosts()->toggle($post->id);
 
-
-
         return redirect()->route('main.show', $post->id);
     }
 }

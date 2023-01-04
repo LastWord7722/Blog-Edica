@@ -14,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail // подключаем верификацию в модель
 {
     use HasApiTokens, HasFactory, Notifiable;
-    // перезаписываем отправление
+
     public function sendEmailVerificationNotification() //перезаписываем отправление
     {
         $this->notify(new SendVerifyWithQueueNotification());
@@ -32,7 +32,6 @@ class User extends Authenticatable implements MustVerifyEmail // подключ�
     public function comments(){
         return $this->HasMany(Comment::class, 'user_id','id')->with('posts');
     }
-
 
     /**
      * The attributes that are mass assignable.
@@ -66,6 +65,4 @@ class User extends Authenticatable implements MustVerifyEmail // подключ�
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
 }

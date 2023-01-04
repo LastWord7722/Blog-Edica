@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+
         return view('admin.user.create', compact('roles'));
     }
 
@@ -33,7 +34,6 @@ class UserController extends Controller
     {
 
         $data= $request->validated();
-
         $service ->store($data);
 
         return redirect()->route('admin.user.index');

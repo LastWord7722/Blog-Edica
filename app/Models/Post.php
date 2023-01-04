@@ -14,7 +14,6 @@ class Post extends Model
     protected $table = 'Posts';
     protected $guarded = false;
 
-
     public function tag(){
         return $this->belongsToMany(Tag::class,'post_tags','post_id','tag_id');
     }
@@ -34,7 +33,7 @@ class Post extends Model
     public function UserComment(){
         return $this->hasMany(Comment::class, 'post_id', 'id')->
         join('Users','comments.user_id','=', 'users.id')->
-            select('comments.created_at', 'users.name','comments.message')->
+            select('comments.created_at', 'users.name','comments.message', 'comments.user_id', 'comments.id')->
             orderBy('created_at', 'desc');
     }
 

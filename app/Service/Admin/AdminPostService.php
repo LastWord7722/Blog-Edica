@@ -9,7 +9,6 @@ use PHPUnit\Exception;
 
 class AdminPostService
 {
-
     public function store($data)
     {
         try { // транзакция, попытка провести логику в тру иначе падаем в катч

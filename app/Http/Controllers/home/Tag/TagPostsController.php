@@ -19,7 +19,8 @@ class TagPostsController extends Controller
 
     public function getPosts(Tag $tag){
       $posts = $tag->posts()->paginate(6);
-        return view('main.tag.postsTag', compact('posts','tag'));
+
+      return view('main.tag.postsTag', compact('posts','tag'));
     }
 
 }

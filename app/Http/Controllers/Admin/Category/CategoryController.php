@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\Category;
 
-
 class CategoryController extends Controller
 {
     public function index()
@@ -42,7 +41,6 @@ class CategoryController extends Controller
 
     public function update(UpdateRequest $request, Category $category)
     {
-
         $data = $request->validated();
         $category->update($data);
 
@@ -55,7 +53,6 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.category.index',compact('category'));
     }
-
 }
 
 

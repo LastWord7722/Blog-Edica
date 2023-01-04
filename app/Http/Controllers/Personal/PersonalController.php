@@ -45,8 +45,7 @@ class PersonalController extends Controller
 
         $user->update($data);
 
-
-        return back()->with('You have successfully upload image');
+        return back();
 
 
     }

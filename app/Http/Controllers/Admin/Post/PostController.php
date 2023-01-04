@@ -32,7 +32,6 @@ class PostController extends Controller
     public function store(StoreRequest $request, AdminPostService $service)
     {
         $data = $request->validated();
-
         $service ->store($data);
 
         return redirect()->route('admin.post.index');
@@ -53,10 +52,8 @@ class PostController extends Controller
 
     public function update(UpdateRequest $request, Post $post, AdminPostService $service)
     {
-
         $data = $request->validated();
         $service->update($data, $post);
-
 
         return redirect()->route('admin.post.show', compact('post'));
     }
