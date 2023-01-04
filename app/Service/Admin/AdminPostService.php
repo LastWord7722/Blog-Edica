@@ -31,20 +31,25 @@ class AdminPostService
         }
     }
 
-    public function update($data, $post)
+    public function update($data, $post, $oldMainImage, $oldPerwImage)
     {
         try {
             DB::BeginTransaction();
+
             if (isset($data['tags_ids'])) {
                 $tagIds = $data['tags_ids'];//выципляем теги, помещаем в переменую и
                 unset($data['tags_ids']); //  убираем их с массива
             }
-            if (isset ($data['preview_image'])) {
+
+
+            if ($oldPerwImage === true ) {
                 $data['preview_image'] = Storage::disk('public')->put('images/preview', $data ['preview_image']);
             }
-            if (isset($data['main_image'])) {
+            if ($oldMainImage === true) {
                 $data['main_image'] = Storage::disk('public')->put('images/main', $data ['main_image']);
             }
+
+
             if (isset($data['tags_ids'])) {
                 $post->tag()->sync($tagIds);
             }

@@ -79,10 +79,11 @@
                 </div>
             </div>
 
-            <div class="form-group ml-2">
+            <div class="form-group ml-4">
+                <p></p>
                 <label for="exampleInputFile">Preview image input</label>
                 <div>
-                    <img src="{{url ('storage/image' . $post->main_image ) }}" alt="main_image" class="w-50">
+                    <img src="{{url ('storage/' . $post->main_image ) }}" alt="main_image" class="w-50">
                     <!--Даем ссылку на изоброжения поста-->
                 </div>
 

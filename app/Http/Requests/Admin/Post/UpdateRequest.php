@@ -26,8 +26,8 @@ class UpdateRequest extends FormRequest
         return [//так же марк обрати внимание, что в rules индифицирует данные по атрибуту name, в html
             'title' => 'required|string', //required как я понял для того чтоб поле было заполненно
             'content' => 'required|string',
-            'preview_image' => 'required|file',
-            'main_image' => 'required|file',
+            'preview_image' => 'file',
+            'main_image' => 'file',
             'category_id' => 'int|exists:categories,id', // exists:categories,id  id без отступов!!
             'tags_ids' => 'required|array',
             'tags_ids.*' => 'required|int|exists:tags,id'

@@ -52,8 +52,13 @@ class PostController extends Controller
 
     public function update(UpdateRequest $request, Post $post, AdminPostService $service)
     {
+        $oldPerwImage = $request->hasFile('preview_image');
+        $oldMainImage = $request->hasFile('main_image');
+
         $data = $request->validated();
-        $service->update($data, $post);
+
+
+        $service->update($data, $post, $oldMainImage, $oldPerwImage);
 
         return redirect()->route('admin.post.show', compact('post'));
     }
