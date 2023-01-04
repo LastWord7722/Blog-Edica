@@ -37,7 +37,7 @@
                     <!--Я когда то обязательно пойму как прописывать эти условия... Но не сегодня-->
                         <!--если массив tags_ids который пошел в метод пост и масив со значениям tag id старое значение тег выбраеть его -->
                         <option
-                            {{ is_array( $post->tag->pluck('id')->toArray()) && in_array($tag->id, $post->tag->pluck('id')->toArray()) ? 'selected' : '' }} value="{{$tag->id}}">
+                                {{ is_array( $post->tag->pluck('id')->toArray()) && in_array($tag->id, $post->tag->pluck('id')->toArray()) ? 'selected' : '' }} value="{{$tag->id}}">
                             {{$tag->id}}){{$tag->title}}
                         </option>
                     @endforeach
@@ -54,8 +54,8 @@
                 @foreach($categories as $category )
                     <!-- ниже условия выбора по умолчанию категории выбор по ид, писать в откр тег опц. -->
                         <option
-                            value="{{$category->id}}" {{ $category->id === $post->category_id ? ' selected' : ''}}>{{$category->id}}
-                            )
+                                value="{{$category->id}}" {{ $category->id === $post->category_id ? ' selected' : ''}}>
+                            {{$category->id}})
                             {{$category->title_category}}</option>
                     @endforeach
                 </select>
@@ -68,7 +68,7 @@
                 <img src="{{url ('storage/' . $post->preview_image ) }}" alt="preview_image" class="w-50">
                 <!--Даем ссылку на изоброжения поста-->
             </div>
-
+            <p></p>
             <div class="input-group" style="margin-bottom: 20px">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name='preview_image'>
@@ -80,14 +80,13 @@
             </div>
 
             <div class="form-group ml-4">
-                <p></p>
-                <label for="exampleInputFile">Preview image input</label>
+                <label for="exampleInputFile">Main image input</label>
                 <div>
                     <img src="{{url ('storage/' . $post->main_image ) }}" alt="main_image" class="w-50">
                     <!--Даем ссылку на изоброжения поста-->
                 </div>
-
-                <div class="input-group">
+                <p></p>
+                <div class="input-group" style="margin-bottom: 20px">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name='main_image'>
                         <label class="custom-file-label">Choose file</label>
@@ -97,10 +96,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Update post</button>
-
                 <a href="{{route('admin.post.index')}}" style="margin-left:10px" class="btn btn-primary">Back</a>
             </div>
         </div>
