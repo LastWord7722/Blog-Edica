@@ -54,9 +54,8 @@ class PostController extends Controller
     {
         $oldPerwImage = $request->hasFile('preview_image');
         $oldMainImage = $request->hasFile('main_image');
-        dd($oldMainImage);
-        $data = $request->validated();
 
+        $data = $request->validated();
 
         $service->update($data, $post, $oldMainImage, $oldPerwImage);
 

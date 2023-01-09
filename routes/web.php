@@ -19,14 +19,14 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //home
-Route::group(['namespace'=>'home'],function (){
+Route::group(['namespace'=>'home' ],function (){
     Route::get('/', [HomePostsController::class, 'index'])->name('main.index');
     Route::get('/{post}', [HomePostsController::class, 'show'])->name('main.show');
 
     Route::group(['namespace' => 'home/Comment', 'prefix'=>''],function (){
        Route::post('{post}/comment',[CommentMainController::class,'store']) ->name('comment.main.store');
-        Route::delete('/{comment}/', [CommentMainController::class, 'destroy'])->name('comment.main.destroy');
     });
+    Route::delete('/{comment}', [CommentMainController::class, 'destroy'])->name('comment.main.destroy');
 
     Route::group(['namespace' => 'home/likes', 'prefix'=>'{post}/likes'],function (){
        Route::post('/',[LikeHomeController::class,'store']) ->name('likes.main.store');

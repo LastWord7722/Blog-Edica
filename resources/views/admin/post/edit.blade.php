@@ -9,7 +9,7 @@
     </div>
     <form action="{{route('admin.post.update', $post->id)}} " class="col-9" method="post" enctype="multipart/form-data">
         @method('patch')
-        @csrfco
+        @csrf
         <div class="card-body">
             <div class="form-group">
                 <label>Title post</label>

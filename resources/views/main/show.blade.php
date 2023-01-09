@@ -8,8 +8,9 @@
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">{{$post->title}}</h1>
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> {{$post->created_at}}</p>
-            <p class="edica-blog-post-meta"><a
-                        href="{{route('main.category.posts',$post->category_id)}}">{{$post->category->title_category}}</a>
+            <p class="edica-blog-post-meta">
+
+                <a href="{{route('main.category.posts', $post->category_id)}}">{{$post->category->title_category}}</a>
             </p>
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200"> Tags:
                 @foreach($post->tag as $oneTags)
@@ -94,15 +95,17 @@
                             <h6 class="card-title m-0 text-dark "> {{$comment->name}}</h6>
                             <p class="blog-post-category"> {{$comment -> DataAsCarbon->diffForHumans()}} </p>
                             <div class="d-flex justify-content-end">
-                                @if($comment->user_id == auth()->user()->id)
-                                    <div class="d-flex justify-content-end">
-                                        <form action="{{route('comment.main.destroy',$comment->id)}}" method="post">
-                                            @csrf
-                                            @method('Delete')
-                                            <button type="submit" class="text-white btn btn-danger"> Delete</button>
-                                        </form>
-                                    </div>
-                                @endif
+                                @auth()
+                                    @if($comment->user_id == auth()->user()->id)
+                                        <div class="d-flex justify-content-end">
+                                            <form action="{{route('comment.main.destroy',$comment->id)}}" method="post">
+                                                @csrf
+                                                @method('Delete')
+                                                <button type="submit" class="text-white btn btn-danger"> Delete</button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                @endauth()
                             </div>
                         </div>
                         <div class="card-body">
@@ -113,6 +116,6 @@
                 @endforeach
             </div>
         </div>
-        </div>
+
     </main>
 @endsection

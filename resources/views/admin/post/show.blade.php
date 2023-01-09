@@ -8,7 +8,7 @@
         <div class="col-9">
             <div class="card">
                 <div class="col-sm-6 d-flex">
-                    <h2 class="m-0 mr-2 ">{{$post->title}}</h2>
+                    <a href="{{route('main.show', $post->id)}}" class="text-success h2 m-0 mr-2 ">{{$post->title}}</a>
                     <a href="{{route('admin.post.edit', $post->id)}}"><i
                             class="fa-regular fa-pen-to-square"></i> </a>
                 </div>
@@ -18,14 +18,14 @@
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
-                            <th>Content</th>
                             <th>Category</th>
+                            <th>Content</th>
                         </tr>
                         <tr>
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
-                            <td>{!!$post->content!!}</td>
                             <td>{{$post->category->title_category}}</td>
+                            <td>{!!$post->content!!}</td>
                         </tr>
                         </tbody>
                     </table>
